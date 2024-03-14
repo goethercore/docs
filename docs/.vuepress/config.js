@@ -11,6 +11,7 @@ export default defineUserConfig({
 
   theme: defaultTheme({
     logo: 'https://firebasestorage.googleapis.com/v0/b/goether-fff83.appspot.com/o/GOether.png?alt=media&token=2bbb7fde-eb40-4682-a5da-daa62c3536f7',
+    head: [['link', { rel: 'icon', href: '/fav.ico' }]],
 
     navbar: ['/', {text:"Guide",link:"/guide/getting-started.html"}, {text:"Github",link:"https://github.com/goethercore/goether"}],
     sidebar: [
