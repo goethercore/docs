@@ -3,7 +3,7 @@ import { defineUserConfig } from 'vuepress/cli'
 import { viteBundler } from '@vuepress/bundler-vite'
 
 export default defineUserConfig({
-  base: '/goether/', // Add this line to set the base configuration
+  base: '/docs/', // Add this line to set the base configuration
   lang: 'en-US',
 
   title: 'Goether',
