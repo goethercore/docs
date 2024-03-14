@@ -12,17 +12,17 @@ export default defineUserConfig({
   theme: defaultTheme({
     logo: 'https://firebasestorage.googleapis.com/v0/b/goether-fff83.appspot.com/o/GOether.png?alt=media&token=2bbb7fde-eb40-4682-a5da-daa62c3536f7',
 
-    navbar: ['/', {text:"Guide",link:"/guide/"}, {text:"Github",link:"https://github.com/goethercore/goether"}],
+    navbar: ['/', {text:"Guide",link:"/guide/getting-started.html"}, {text:"Github",link:"https://github.com/goethercore/goether"}],
     sidebar: [
       {
         text: 'Introduction',
         link: '/introduction.html',
         collapsable: true,
-        icon: '/icons/introduction.png'
+        icon: '/images/info.png'
       },
       {
         text: 'Guide',
-        link: '/guide/',
+        link: '/guide/getting-started.html',
         collapsable: true,
         icon: '/icons/guide.png',
         children: [
