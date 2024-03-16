@@ -1,4 +1,4 @@
-import{_ as n,o as s,c as a,a as t}from"./app-DhLxQwdN.js";const e={},o=t(`<h1 id="contract" tabindex="-1"><a class="header-anchor" href="#contract"><span>Contract</span></a></h1><p>All the contract methods can be gotten from this import</p><div class="language-go line-numbers-mode" data-ext="go" data-title="go"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
+import{_ as n,o as s,c as a,a as t}from"./app-DJM3jSb-.js";const e={},o=t(`<h1 id="contract" tabindex="-1"><a class="header-anchor" href="#contract"><span>Contract</span></a></h1><p>All the contract methods can be gotten from this import</p><div class="language-go line-numbers-mode" data-ext="go" data-title="go"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
 	<span class="token string">&quot;encoding/json&quot;</span>
 	<span class="token string">&quot;fmt&quot;</span>
 	<span class="token string">&quot;log&quot;</span>
