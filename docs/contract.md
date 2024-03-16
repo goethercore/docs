@@ -33,7 +33,7 @@ functions that returns string can be decoded with
 
 ## ABI
 
-```go
+```bash
 	abi := map[string]string{
 		"decimals":      "function decimals()",
 		"symbol":        "function symbol() view returns (string)",
@@ -43,7 +43,7 @@ functions that returns string can be decoded with
 		"transfer":      "function transfer(address to, uint256 value) external returns (bool)",
 		"TransferEvent": "event Transfer(address from, address to, uint256 value)",
 	}
-	```
+```
 
 ## Read-Only
 
@@ -130,6 +130,7 @@ var rpc = "https://polygon-mumbai.g.alchemy.com/v2/**************"
 
 ```go
 var amt = "0.05"
+var contractAddress="0x202a60A75892CB0EB352fCe2cce5c57EfBFc3CB1"
 var reciever = "0xC1B9271024a8512A73481230b94bFbe60E131054"
 func mutateContract() {
 
