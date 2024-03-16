@@ -2,6 +2,49 @@
 
 ## Address
 
+
+> Generate Wallet Address
+> 
+The  `address.CreateWallet()` function is responsible for generating a new wallet address from the `github.com/goethercore/goether/internals/address` call.
+
+ You need to unmarshals the JSON response into a `types.Wallet` struct to get the generated wallet address.
+
+- Example:
+
+```go
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+	"github.com/goethercore/goether/internals/address"
+	"github.com/goethercore/goether/types"
+	"github.com/goethercore/goether/utils"
+)
+
+func createAddress(){
+	err,value:=address.CreateWallet()
+	if err != nil{
+		fmt.Println( err)
+	}
+	var walletData types.Wallet
+	if err := json.Unmarshal([]byte(value), &walletData); err != nil {
+		log.Println("error unmarshaling", err)
+
+	}
+	fmt.Println( walletData.Address)
+}
+```
+
+- `Returns`
+The reponse data returned looks like this
+```json
+{0xc29af6f4d99cd41fb6885a71993bb2f1420b4edd 0x04c6f26150c83b95936b0804efebeeaf843a556c908d3bc595cb05453d6063de66414f37c1dffef17d3b8bb15cca8c2410df4a5d7e228137ce9bdf0d405e6b4421 e494b6fcb3384fe241cfffec2595ecfe4df857e5301cc975644bcc15f200ae5f}
+```
+and it can be accessed with the Wallet type as ```walletData.Address``` for the wallet address and ```wallet.PrivateKey```
+or  ```wallet.PublicKey```
+
+
 ```Sending Transactions```
 This method is the way to transfer token native to that chain whose ```rpc``` you are using,
 To write to the blockchain you require access to a private key which controls some account. 
@@ -18,11 +61,30 @@ func SendCoin() {
 }
 
 ```
+--- 
 
-```Get Balance```
-To write to the blockchain you require access to a private key which controls some account. In most cases, those private keys are not accessible directly to your code, and instead you make requests via a Signer, which dispatches the request to a service (such as MetaMask) which provides strictly gated access and requires feedback to the user to approve or reject operations.
+` GetWalletBalance()`
+
+The `GetWalletBalance()` function is responsible for retrieving the balance of a given wallet using the `address.GetBalance()` function from the `github.com/goethercore/goether/internals/address` package root. It prints out the balance of the wallet to the console.
+
+Parameters
+: This function does not take any parameters directly. However, it relies on the following variables:
+- `rpc`: Represents the RPC client used for communication.
+- `wallet`: Represents the wallet whose balance is to be retrieved.
+
+## Returns
+This function does not return any values directly. However, it prints out the balance of the specified wallet to the console. If there's an error during the retrieval process, the function will panic with the encountered error.
+
+## Example Usage
+```go
+// Example usage assuming 'rpc' and 'wallet' variables are defined elsewhere
 
 ```go
+
+import (
+	"fmt"
+	"github.com/goethercore/goether/internals/address"
+)
 
 func GetWalletBalance() {
 	result, err := address.GetBalance(rpc, wallet)
@@ -75,7 +137,6 @@ func GetTransactionConfirmation() {
 }
 ```
 
-## Blocks
 
 ```go
 
@@ -106,80 +167,6 @@ func LatestBlock() {
 }
 ```
 
-## Contracts
-
-A Contract is a meta-class, which means that its definition its derived at run-time, based on the ABI it is passed, which then determined what methods and properties are available on it.
-
-
-
-```Read-only methods (i.e. view and pure)```
-
-A read-only method is one which cannot change the state of the blockchain, but often provide a simple interface to get important data about a Contract.
-
-
-
-```go
-func ReadContract() {
-
-	abi := map[string]string{
-		"decimals":      "function decimals()",
-		"symbol":        "function symbol() view returns (string)",
-		"name":          "function name()",
-		"totalSupply":   "function totalSupply()",
-		"balanceOf":     "function balanceOf(address)",
-		"transfer":      "function transfer(address to, uint256 value) external returns (bool)",
-		"TransferEvent": "event Transfer(address from, address to, uint256 value)",
-	}
-	
-
-	// For functions with argument
-	 data2 := map[string]interface{}{
-	 	"functionName": "transfer",
-	 	"args":         []interface{}{wallet,20}, // corrected syntax
-	}
-
-	result, err := contract.Call(rpc, abi, DAIContract, wallet, data)
-
-	if err != nil {
-		panic(err)
-	}
-	res, err := utils.HexToText(result)
-	println(res)
-}
-```
-
-
-
-```go
-func MutateContract() {
-
-	abi := map[string]string{
-		"decimals":      "function decimals()",
-		"symbol":        "function symbol() view returns (string)",
-		"name":          "function name()",
-		"totalSupply":   "function totalSupply()",
-		"balanceOf":     "function balanceOf(address)",
-		"transfer":      "function transfer(address to, uint256 value) external returns (bool)",
-		"TransferEvent": "event Transfer(address from, address to, uint256 value)",
-	}
-	// For functions without an argument
-	data := map[string]interface{}{
-		"functionName": "name",
-		"args":         []interface{}{}, // corrected syntax
-	}
-
-	result, err := contract.Call(rpc, abi, DAIContract, wallet, data)
-
-	if err != nil {
-		panic(err)
-	}
-	res, err := utils.HexToText(result)
-	println(res)
-}
-```
-
-
-## MemPool
 
 
 ```go

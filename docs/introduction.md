@@ -5,8 +5,6 @@
 
 # Introduction
 
-<!-- VuePress is composed of two parts: a [minimalistic static site generator](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core) with a Vue-powered [theming system](https://v1.vuepress.vuejs.org/theme/) and [Plugin API](https://v1.vuepress.vuejs.org/plugin/), and a [default theme](https://v1.vuepress.vuejs.org/theme/default-theme-config.html) optimized for writing technical documentation. It was created to support the documentation needs of Vue's own sub projects. -->
-
 Goether is a Golang package designed to provide various functionalities related to EVM blockchains. This package offers capabilities such as interacting with contracts, exploring blocks, monitoring mempool transactions in real-time, and more. Whether you're building decentralized applications or exploring blockchain data, geth-lte aims to simplify your development process.
 
 
