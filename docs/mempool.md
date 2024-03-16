@@ -51,6 +51,7 @@ func ListenSmartContractMempoolTx() {
 
 	}
 }
+```
 
 - `Returns`
   The reponse data returned looks like this
