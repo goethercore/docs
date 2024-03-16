@@ -78,8 +78,7 @@ func getAWalletBalance() {
 ```
 
 - `Returns`
-  This function does not return any values directly. However, it prints out the balance of the specified wallet to the console. If there's an error during the retrieval process, the function will panic with the encountered error.
-  string response as
+  This function returns the response as string 
 
 ```shell
 0.991
