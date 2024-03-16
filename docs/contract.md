@@ -129,30 +129,29 @@ var rpc = "https://polygon-mumbai.g.alchemy.com/v2/**************"
 ## Mutate
 
 ```go
-func MutateContract() {
+var amt = "0.05"
+var reciever = "0xC1B9271024a8512A73481230b94bFbe60E131054"
+func mutateContract() {
 
 	abi := map[string]string{
 		"decimals":      "function decimals()",
-		"symbol":        "function symbol() view returns (string)",
+		"symbol":        "function symbol()",
 		"name":          "function name()",
 		"totalSupply":   "function totalSupply()",
 		"balanceOf":     "function balanceOf(address)",
-		"transfer":      "function transfer(address to, uint256 value) external returns (bool)",
+		"transfer":      "function transfer(address to, uint256 value)",
 		"TransferEvent": "event Transfer(address from, address to, uint256 value)",
 	}
-	// For functions without an argument
+
+	// For functions with argument
 	data := map[string]interface{}{
-		"functionName": "name",
-		"args":         []interface{}{wallet,20}, // corrected syntax
-
+		"functionName": "transfer",
+		"args":         []interface{}{reciever, amt}, // corrected syntax
 	}
 
-	result, err := contract.Call(rpc, abi, DAIContract, wallet, data)
+	result, _ := contract.Mutate(rpc, pk, abi, contractAddress, data)
 
-	if err != nil {
-		panic(err)
-	}
-	res, err := utils.HexToText(result)
+    res, _ := utils.HexToText(result)
 	println(res)
 }
 ```
