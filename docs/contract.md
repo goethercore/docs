@@ -33,7 +33,7 @@ functions that returns string can be decoded with
 
 ## ABI
 
-````go
+```go
 	abi := map[string]string{
 		"decimals":      "function decimals()",
 		"symbol":        "function symbol() view returns (string)",
@@ -98,7 +98,7 @@ var rpc = "https://polygon-mumbai.g.alchemy.com/v2/**************"
 	ethbalance, _ := utils.DivideLargeNumbers(resultStr.String(), denominatorStr, 18)
 	println(ethbalance)
 }
-````
+```
 
 - Example of get contract token name which is also a read only, this function requires no parameter, so the data field remains empty
 
