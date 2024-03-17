@@ -1,13 +1,37 @@
-
 # MemPool
 
+All the mempool methods can be gotten from this import
 
-## Stream Mempool transaction
+```go
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+	"github.com/goethercore/goether/internals/mempool"
+	"github.com/goethercore/goether/types"
+	"github.com/goethercore/goether/utils"
+)
+```
+
+## Stream Mempool Transaction
+The `mempool.StreamMempoolTransactions()` function streams mempool transactions using the `github.com/goethercore/goether/internals/mempool` from a specified RPC endpoint. It initializes a channel to receive transaction data and starts a goroutine to continuously listen for incoming data.
+
+
+
+> Parameters
+> : This function takes 2(two) parameters directly. both as strings respectively and in this order:
+
+- `rpc`: An RPC (Remote Procedure Call) client instance to interact with the blockchain network.
+- `channel`: Accepts an unbuffered channels to recieve the stream.
+
+`Description`:
+This function connects to the specified WebSocket endpoint (rpc) and continuously listens for mempool transactions. Each incoming transaction is decoded and printed to the console, displaying the sender, amount, and recipient of the transaction.
+- Example 
 
 ```go
 func ListenMempool() {
 	poolCh := make(chan string)
-	var rpc = "wss://polygon-mumbai.g.alchemy.com/v2/A7mvet09ATzDQmzbzQ8RNcn8X9lpTUR2"
+	var rpc = "wss://polygon-mumbai.g.alchemy.com/v2/***************"
 
 	go mempool.StreamMempoolTransactions(rpc, poolCh)
 	for value := range poolCh {
@@ -25,15 +49,30 @@ func ListenMempool() {
 
 	}
 }
+
 ```
 
-## Stream Contract Mempool Transaction 
+
+## Stream Contract Mempool Transaction
+The `mempool.ContractMempoolTransactions()` function streams mempool transactions of a contract using the `github.com/goethercore/goether/internals/mempool` from a specified RPC endpoint. It initializes a channel to receive transaction data and starts a goroutine to continuously listen for incoming data.
+
+
+
+> Parameters
+> : This function takes 3(three) parameters directly. both as strings respectively and in this order:
+
+- `rpc`: An RPC (Remote Procedure Call) client instance to interact with the blockchain network which must be a websocket url.
+- `contractAddress`: The contract address of the contract at which you want to monitor
+- `channel`: Accepts an unbuffered channel to recieve the stream.
+
+`Description`:
+This function connects to the specified WebSocket endpoint (rpc) and continuously listens fora contracts mempool transactions. Each incoming transaction is decoded and printed to the console, displaying the sender, amount, and recipient of the transaction.
+- Example 
 
 ```go
-func ListenSmartContractMempoolTx() {
+func ListenContractMempoolTransactions() {
 	poolCh := make(chan string)
-   var contractAddress="0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063"
-	var rpc = "wss://polygon-mainnet.g.alchemy.com/v2/*************"
+	var rpc = "wss://polygon-mumbai.g.alchemy.com/v2/***************"
 
 	go mempool.ContractMempoolTransactions(rpc,contractAddress, poolCh)
 	for value := range poolCh {
@@ -42,7 +81,7 @@ func ListenSmartContractMempoolTx() {
 			log.Println("error unmarshaling", err)
 			continue
 		}
-		amount, err := utils.ConvertHexToBigInt(poolData.Value)
+		amount, err := utils.DecodeBig(poolData.Value)
 
 		if err != nil {
 			log.Println("error decoding hex value", err)
@@ -51,11 +90,7 @@ func ListenSmartContractMempoolTx() {
 
 	}
 }
+
 ```
 
-- `Returns`
-  The reponse data returned looks like this
-  ```json
-  Transaction From: 0x5fb184b266ed8132e94880c94d7f6b1033e24f67 of 226673.591177742970257408 to 0xa28663b53fb7e4c2b37293f1ac7bfb02976cad93 
-  ```
 
