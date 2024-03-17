@@ -1,4 +1,4 @@
-import{_ as n,o as s,c as a,a as e}from"./app-BDIELRID.js";const t={},o=e(`<h1 id="address" tabindex="-1"><a class="header-anchor" href="#address"><span>Address</span></a></h1><p>All the address methods can be gotten from this import</p><div class="language-go line-numbers-mode" data-ext="go" data-title="go"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
+import{_ as n,o as s,c as a,a as e}from"./app-C_2_kWfU.js";const t={},o=e(`<h1 id="address" tabindex="-1"><a class="header-anchor" href="#address"><span>Address</span></a></h1><p>All the address methods can be gotten from this import</p><div class="language-go line-numbers-mode" data-ext="go" data-title="go"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
 	<span class="token string">&quot;encoding/json&quot;</span>
 	<span class="token string">&quot;fmt&quot;</span>
 	<span class="token string">&quot;log&quot;</span>
