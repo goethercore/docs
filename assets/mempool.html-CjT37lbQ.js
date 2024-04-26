@@ -1,4 +1,4 @@
-import{_ as n,o as s,c as a,a as t}from"./app-C_2_kWfU.js";const o={},e=t(`<h1 id="mempool" tabindex="-1"><a class="header-anchor" href="#mempool"><span>MemPool</span></a></h1><p>All the mempool methods can be gotten from this import</p><div class="language-go line-numbers-mode" data-ext="go" data-title="go"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
+import{_ as n,o as s,c as a,a as t}from"./app-BIQze31H.js";const o={},e=t(`<h1 id="mempool" tabindex="-1"><a class="header-anchor" href="#mempool"><span>MemPool</span></a></h1><p>All the mempool methods can be gotten from this import</p><div class="language-go line-numbers-mode" data-ext="go" data-title="go"><pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
 	<span class="token string">&quot;encoding/json&quot;</span>
 	<span class="token string">&quot;fmt&quot;</span>
 	<span class="token string">&quot;log&quot;</span>
