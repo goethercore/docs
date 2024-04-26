@@ -103,9 +103,11 @@ var rpc = "https://polygon-mumbai.g.alchemy.com/v2/**************"
 var  privateKey = "cb5b800d6310735c8cdd2abc2681cd00ab4b20e4348fd4c1a4b4454df9512172"
 var amount = "0.05"
 var reciever = "0xC1B9271024a8512A73481230b94bFbe60E131054"
+
 func SendCoin() {
-	value, err :=address.Transfer(rpc, privateKey, amount,reciever)
-		if err != nil {
+	var amount,_ = utils.StringToWei("0.05")
+	value, err := address.Transfer(rpc, privateKey, amount, receiver)
+	if err != nil {
 		fmt.Println(err)
 		return
 	}
